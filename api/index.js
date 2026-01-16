@@ -7,7 +7,7 @@ const User = require("../models/User");
 const app = express();
 
 // middleware
-app.use(express.urlencoded({ extended: true }));jj
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // EJS setup
