@@ -15,13 +15,12 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.static(path.join(__dirname, "../public")));
 
-// MongoDB (serverless safe)
-let isConnected = false;
-async function connectDB() {
-  if (isConnected) return;
-  await mongoose.connect(process.env.MONGODB_URI);
-  isConnected = true;
-}
+require("dotenv").config(); // local ke liye
+
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("MongoDB Connected ✅"))
+  .catch(err => console.log(err));
+
 
 // routes
 app.get("/", (req, res) => res.redirect("/login"));
